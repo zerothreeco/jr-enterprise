@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="JR Enterprise LLC helps businesses scale through strategic advertising campaigns, lead generation, and growth-focused marketing.">
+<title>JR Enterprise LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: "targeting system" — charcoal field, royal-blue grid with coordinates, radar hero that finds leads, index-style service rows */
+:root{
+  color-scheme:dark;
+  --bg:#0C0E13; --bg-2:#12151D; --surface:#151926; --ink:#ECEEF5; --muted:#8E95AB; --line:rgba(236,238,245,.09);
+  --grid:rgba(43,77,224,.26); --grid-faint:rgba(43,77,224,.11);
+  --accent:#2B4DE0; --accent-hi:#7189FF; --accent-ink:#FFFFFF; --accent-soft:rgba(43,77,224,.16);
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background-color:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body);
+  background-image:
+    linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),
+    linear-gradient(var(--grid-faint) 1px,transparent 1px),linear-gradient(90deg,var(--grid-faint) 1px,transparent 1px);
+  background-size:96px 96px,96px 96px,24px 24px,24px 24px;background-position:-1px -1px}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:24px}
+@media (max-width:480px){.wrap{padding-inline:16px}}
+:focus-visible{outline:2px solid var(--accent-hi);outline-offset:3px}
+::selection{background:var(--accent);color:#fff}
+
+.dot{position:relative;display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent-hi);flex:none}
+.dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--accent-hi);animation:pulse 1.8s ease-out infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(3.4);opacity:0}}
+@media (prefers-reduced-motion:reduce){.dot::after,.ticker-track{animation:none!important}html{scroll-behavior:auto}}
+
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.label{display:inline-flex;align-items:center;gap:10px;color:var(--muted)}
+.label .br{color:var(--accent-hi)}
+
+/* Nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(12,14,19,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:66px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.mark{width:34px;height:34px;flex:none}
+.brand-txt{font:800 17px/1 var(--display);font-stretch:80%;letter-spacing:.06em;text-transform:uppercase}
+.brand-txt small{display:block;font:500 10px/1.4 var(--mono);letter-spacing:.14em;color:var(--muted);font-stretch:100%}
+.links{display:flex;gap:6px}
+.links a{text-decoration:none;color:var(--muted);font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;border-radius:6px}
+.links a:hover{color:var(--ink);background:var(--accent-soft)}
+@media (max-width:780px){.links{display:none}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:15px 22px;font:600 15px/1 var(--body);text-decoration:none;cursor:pointer;border:1px solid transparent;border-radius:4px;transition:transform .15s,background .15s,border-color .15s;position:relative}
+.btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 0 0 1px var(--accent),0 10px 30px -10px rgba(43,77,224,.8)}
+.btn-primary:hover{background:#3557EE;transform:translateY(-1px)}
+.btn-ghost{border-color:rgba(113,137,255,.4);color:var(--ink);background:rgba(12,14,19,.6)}
+.btn-ghost:hover{border-color:var(--accent-hi);background:var(--accent-soft)}
+.btn-sm{padding:11px 16px;font-size:14px}
+.arrow{font-family:var(--mono)}
+
+/* Hero */
+.hero{position:relative;padding-block:64px 40px}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;max-width:900px}
+.hero-grid>*{min-width:0}
+@media (max-width:940px){.hero-grid{grid-template-columns:1fr}}
+.coords{display:flex;justify-content:space-between;color:var(--muted);margin-bottom:28px;gap:12px;flex-wrap:wrap}
+h1{margin:22px 0 26px;font:900 clamp(54px,9vw,128px)/.86 var(--display);font-stretch:68%;text-transform:uppercase;letter-spacing:-.005em}
+h1 .out{color:transparent;-webkit-text-stroke:1.5px var(--ink);display:block}
+h1 .solid{display:block}
+h1 .blue{color:var(--accent-hi);display:block}
+.lede{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:50ch;margin:0 0 32px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+
+.radar-box{position:relative;aspect-ratio:1/1;max-width:520px;width:100%;margin-inline:auto}
+.radar-box canvas{width:100%;height:100%;display:block}
+.corner{position:absolute;width:22px;height:22px;border-color:var(--accent-hi);border-style:solid;border-width:0}
+.c1{top:0;left:0;border-top-width:2px;border-left-width:2px}
+.c2{top:0;right:0;border-top-width:2px;border-right-width:2px}
+.c3{bottom:0;left:0;border-bottom-width:2px;border-left-width:2px}
+.c4{bottom:0;right:0;border-bottom-width:2px;border-right-width:2px}
+.readout{position:absolute;left:14px;bottom:14px;right:14px;display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:11px}
+.readout b{color:var(--accent-hi);font-weight:500}
+.rtop{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;color:var(--ink);font-size:11px}
+
+/* Ticker */
+.ticker{border-block:1px solid var(--line);background:#FFFFFF;overflow:hidden;margin-top:56px}
+.ticker-track{display:flex;width:max-content;animation:tick 30s linear infinite}
+.ticker span{font:800 22px/1 var(--display);font-stretch:75%;text-transform:uppercase;letter-spacing:.04em;padding:16px 24px;white-space:nowrap;color:#13257A;display:flex;align-items:center;gap:24px}
+.ticker span::after{content:"";width:9px;height:9px;border:2px solid #2B4DE0;transform:rotate(45deg)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* Sections */
+section{padding-block:104px;position:relative}
+@media (max-width:640px){section{padding-block:68px}}
+h2{font:900 clamp(38px,5.6vw,72px)/.92 var(--display);font-stretch:70%;text-transform:uppercase;margin:16px 0 0;text-wrap:balance}
+h2 .out{color:transparent;-webkit-text-stroke:1.2px var(--ink)}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:52px}
+.head>*{min-width:0}
+.head p{margin:0;color:var(--muted);font-size:17px;max-width:52ch}
+@media (max-width:820px){.head{grid-template-columns:1fr;gap:16px}}
+
+.about{display:grid;grid-template-columns:240px 1fr;gap:40px;padding:48px;background:rgba(21,25,38,.85);border:1px solid var(--line);position:relative}
+.about>*{min-width:0}
+.about p{margin:0;font-size:clamp(20px,2.4vw,30px);line-height:1.38;font-weight:500;max-width:40ch}
+.about p em{font-style:normal;color:var(--accent-hi)}
+@media (max-width:720px){.about{grid-template-columns:1fr;padding:28px 22px;gap:14px}}
+
+/* Service index */
+.svc-list{border-top:1px solid var(--line)}
+.svc{display:grid;grid-template-columns:110px 1.1fr 1.2fr 40px;gap:28px;align-items:center;padding:34px 8px;border-bottom:1px solid var(--line);transition:background .2s}
+.svc>*{min-width:0}
+.svc:hover{background:linear-gradient(90deg,var(--accent-soft),transparent 70%)}
+.svc .code{font:500 13px var(--mono);color:var(--accent-hi);letter-spacing:.1em}
+.svc h3{margin:0;font:900 clamp(28px,3.4vw,44px)/.95 var(--display);font-stretch:72%;text-transform:uppercase}
+.svc p{margin:0 0 10px;color:var(--muted)}
+.svc .tags{display:flex;flex-wrap:wrap;gap:6px}
+.svc .tags span{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border:1px solid var(--line);color:var(--ink)}
+.svc .go{width:40px;height:40px;border:1px solid rgba(113,137,255,.4);display:grid;place-items:center;color:var(--accent-hi);font-family:var(--mono);transition:transform .2s,background .2s}
+.svc:hover .go{background:var(--accent);color:#fff;transform:rotate(-45deg)}
+@media (max-width:860px){.svc{grid-template-columns:1fr;gap:10px;padding:28px 4px}.svc .go{display:none}}
+
+/* Statement */
+.statement{padding-block:120px;text-align:left;overflow:hidden}
+.statement .big{font:900 clamp(44px,8.6vw,124px)/.88 var(--display);font-stretch:66%;text-transform:uppercase;margin:0}
+.statement .big .out{color:transparent;-webkit-text-stroke:1.5px rgba(236,238,245,.55)}
+.statement .big .blue{color:var(--accent-hi)}
+.statement .big+.big{margin-top:10px;padding-left:clamp(0px,8vw,140px)}
+
+/* System */
+.system{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.system>*{min-width:0}
+@media (max-width:880px){.system{grid-template-columns:1fr}}
+.system p{color:var(--muted);font-size:18px;max-width:48ch}
+.pipe{position:relative;display:grid;gap:0;border:1px solid var(--line);background:rgba(21,25,38,.85)}
+.pipe div{display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:14px;padding:18px 20px;border-bottom:1px solid var(--line)}
+.pipe div:last-child{border-bottom:0;background:var(--accent);color:#fff}
+.pipe .k{font:500 11px var(--mono);color:var(--accent-hi);letter-spacing:.1em}
+.pipe div:last-child .k{color:rgba(255,255,255,.8)}
+.pipe strong{font-weight:600}
+.pipe .st{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+.pipe div:last-child .st{color:#fff}
+
+/* Packages */
+.pkgs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);background:rgba(21,25,38,.9)}
+@media (max-width:900px){.pkgs{grid-template-columns:1fr}}
+.pkg{padding:32px 28px;display:flex;flex-direction:column;gap:22px;border-right:1px solid var(--line);min-width:0;position:relative}
+.pkg:last-child{border-right:0}
+@media (max-width:900px){.pkg{border-right:0;border-bottom:1px solid var(--line)}.pkg:last-child{border-bottom:0}}
+.pkg.feat{background:linear-gradient(180deg,rgba(43,77,224,.28),rgba(43,77,224,.06));box-shadow:inset 0 2px 0 var(--accent-hi)}
+.pkg .top{display:flex;justify-content:space-between;align-items:center;color:var(--muted)}
+.pkg .tag{background:var(--accent);color:#fff;padding:4px 9px}
+.pkg h3{margin:0;font:900 30px/1 var(--display);font-stretch:72%;text-transform:uppercase}
+.price{font:900 64px/1 var(--display);font-stretch:70%;font-variant-numeric:tabular-nums}
+.price small{font:500 14px var(--mono);color:var(--muted);letter-spacing:.06em;font-stretch:100%}
+.spec{margin:0;border-top:1px dashed var(--line)}
+.spec div{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px dashed var(--line);font-variant-numeric:tabular-nums}
+.spec dt{color:var(--muted);font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;align-self:center}
+.spec dd{margin:0;font:800 22px/1 var(--display);font-stretch:80%}
+.bars{display:flex;gap:4px;height:10px}
+.bars i{flex:1;background:var(--line)}
+.bars i.on{background:var(--accent-hi)}
+.pkg .btn{margin-top:auto}
+.note{margin-top:18px;color:var(--muted);display:flex;align-items:center;gap:10px}
+
+/* Inquiry */
+.inq{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
+.inq>*{min-width:0}
+@media (max-width:940px){.inq{grid-template-columns:1fr;gap:32px}}
+.inq-intro p{color:var(--muted);font-size:17px;margin:20px 0 0;max-width:42ch}
+.connect{margin:36px 0 0;border-top:1px solid var(--line)}
+.connect div{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.connect dt{color:var(--muted);font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;align-self:center}
+.connect dd{margin:0;font-weight:600}
+form{background:rgba(21,25,38,.94);border:1px solid var(--line);padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:18px 16px;position:relative}
+form::before{content:"";position:absolute;top:-1px;left:-1px;width:60px;height:3px;background:var(--accent-hi)}
+@media (max-width:600px){form{grid-template-columns:1fr;padding:22px}}
+.form-title{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;color:var(--muted);padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:4px;gap:10px;flex-wrap:wrap}
+.f{display:grid;gap:8px;min-width:0}
+.f.full{grid-column:1/-1}
+label,.lbl{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.req{color:var(--accent-hi)}
+input,select,textarea{width:100%;font:400 15px var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:13px 14px}
+input::placeholder,textarea::placeholder{color:#5E6479}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent-hi);box-shadow:0 0 0 3px var(--accent-soft)}
+textarea{min-height:110px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;width:1px;height:1px}
+.chips label{padding:10px 14px;border:1px solid var(--line);cursor:pointer;color:var(--ink);background:var(--bg);letter-spacing:.06em}
+.chips input:checked+label{background:var(--accent);border-color:var(--accent);color:#fff}
+.chips input:focus-visible+label{outline:2px solid var(--accent-hi);outline-offset:2px}
+.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-top:6px}
+.form-foot small{color:var(--muted)}
+.err{color:#FF7A7A}
+.done{grid-column:1/-1;text-align:center;padding:44px 10px}
+.done h3{font:900 40px/1 var(--display);font-stretch:70%;text-transform:uppercase;margin:16px 0 8px}
+.done p{color:var(--muted);margin:0}
+
+footer{border-top:1px solid var(--line);background:var(--bg-2);padding-block:44px 36px;overflow:hidden}
+.foot-big{font:900 clamp(56px,14vw,200px)/.8 var(--display);font-stretch:62%;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(113,137,255,.35);margin:0 0 28px;white-space:nowrap}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+
+<header>
+  <nav class="wrap" aria-label="Main">
+    <a class="brand" href="#top">
+      <svg class="mark" viewBox="0 0 34 34" aria-hidden="true"><rect x="1" y="1" width="32" height="32" fill="none" stroke="#7189FF" stroke-width="1.5"/><circle cx="17" cy="17" r="9" fill="none" stroke="#7189FF" stroke-width="1.5"/><path d="M17 3v6M17 25v6M3 17h6M25 17h6" stroke="#7189FF" stroke-width="1.5"/><circle cx="17" cy="17" r="2.6" fill="#2B4DE0"/></svg>
+      <span class="brand-txt">JR Enterprise<small>LLC · Est. growth systems</small></span>
+    </a>
+    <div class="links"><a href="#services">Services</a><a href="#system">System</a><a href="#packages">Packages</a><a href="#inquiry">Contact</a></div>
+    <a class="btn btn-primary btn-sm" href="#inquiry">Start an inquiry</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div class="coords mono"><span>[ JR-ENT / HQ ]</span><span>Service area: Global reach</span><span>Mon – Fri · 09:00 – 18:00</span></div>
+      <div class="hero-grid">
+        <div>
+          <span class="label mono"><span class="dot"></span>Quality lead generation via AI systems</span>
+          <h1><span class="out">Turn</span><span class="solid">attention</span><span class="blue">into growth.</span></h1>
+          <p class="lede">JR Enterprise helps businesses scale through strategic advertising campaigns, lead generation, and growth-focused marketing.</p>
+          <div class="ctas">
+            <a class="btn btn-primary" href="#inquiry">Start an inquiry <span class="arrow">→</span></a>
+            <a class="btn btn-ghost" href="#packages">View packages</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ticker" aria-hidden="true"><div class="ticker-track">
+      <span>Lead Generation</span><span>Advertising Campaigns</span><span>Brand Scaling</span><span>AI Strategy</span><span>Ad Systems</span><span>Marketing Strategy</span>
+      <span>Lead Generation</span><span>Advertising Campaigns</span><span>Brand Scaling</span><span>AI Strategy</span><span>Ad Systems</span><span>Marketing Strategy</span>
+    </div></div>
+  </div>
+
+  <section style="padding-top:72px">
+    <div class="wrap">
+      <div class="about">
+        <span class="label mono"><span class="br">[</span> About <span class="br">]</span></span>
+        <p>JR Enterprise works with businesses looking to grow through <em>paid advertising, lead generation, and scalable marketing strategy.</em> The goal is to help brands reach the right audience, generate more opportunities, and build campaigns around real growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" style="padding-top:24px">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="label mono"><span class="dot"></span>What JR Enterprise does</span><h2>Three ways <span class="out">we</span> grow you.</h2></div>
+        <p>Finding the right people, putting the right ads in front of them, and turning that attention into lasting growth.</p>
+      </div>
+      <div class="svc-list">
+        <article class="svc">
+          <span class="code">[ LG ]</span>
+          <h3>AI Lead Generation</h3>
+          <div><p>Helping businesses attract and capture new opportunities, using advanced machine learning to identify and capture high-intent prospects with precision.</p>
+            <div class="tags"><span>Prospect targeting</span><span>Lead capture</span><span>Auto-nurturing</span></div></div>
+          <a class="go" href="#inquiry" aria-label="Inquire about AI lead generation">→</a>
+        </article>
+        <article class="svc">
+          <span class="code">[ AD ]</span>
+          <h3>Advertising Campaigns</h3>
+          <div><p>Structured paid campaigns designed around business growth, built on scalable, high-conversion ad systems for predictable, profitable results.</p>
+            <div class="tags"><span>Paid ads</span><span>Campaign structure</span><span>Ad systems</span></div></div>
+          <a class="go" href="#inquiry" aria-label="Inquire about advertising campaigns">→</a>
+        </article>
+        <article class="svc">
+          <span class="code">[ BS ]</span>
+          <h3>Brand Scaling &amp; AI Strategy</h3>
+          <div><p>Improving reach, positioning, and overall growth strategy, transforming your marketing through technology-driven insights.</p>
+            <div class="tags"><span>Positioning</span><span>Marketing strategy</span><span>Growth planning</span></div></div>
+          <a class="go" href="#inquiry" aria-label="Inquire about brand scaling">→</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap">
+      <p class="big"><span class="out">Good brands</span> get attention.</p>
+      <p class="big">Great brands <span class="blue">turn it into growth.</span></p>
+    </div>
+  </section>
+
+  <section id="system" style="padding-top:24px">
+    <div class="wrap system">
+      <div>
+        <span class="label mono"><span class="dot"></span>AI-powered lead systems</span>
+        <h2>Predictable. <span class="out">Profitable.</span> Built to scale.</h2>
+        <p>Transform your marketing with predictable, profitable systems. JR Enterprise combines AI with high-conversion paid ads to generate leads and drive sales for businesses ready to scale.</p>
+        <a class="btn btn-ghost" href="#inquiry">Build my system <span class="arrow">→</span></a>
+      </div>
+      <div class="pipe" aria-label="How the system works">
+        <div><span class="k">IN</span><strong>Paid ad architecture</strong><span class="st">Reach</span></div>
+        <div><span class="k">ID</span><strong>AI prospect targeting</strong><span class="st">Capture</span></div>
+        <div><span class="k">FU</span><strong>Automated lead nurturing</strong><span class="st">Follow-up</span></div>
+        <div><span class="k">OUT</span><strong>More sales opportunities</strong><span class="st"><span class="dot" style="background:#fff"></span>Growth</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="packages" style="padding-top:24px">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="label mono"><span class="dot"></span>Packages</span><h2>Pick your <span class="out">volume.</span></h2></div>
+        <p>Monthly packages scaled by campaign volume. Choose what fits where your business is today.</p>
+      </div>
+      <div class="pkgs">
+        <article class="pkg">
+          <div class="top mono"><span>Tier 01</span></div>
+          <h3>Starter</h3>
+          <div class="price">$3,000<small> / mo</small></div>
+          <dl class="spec"><div><dt>Campaigns</dt><dd>3</dd></div><div><dt>Ads per campaign</dt><dd>3</dd></div></dl>
+          <div class="bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <a class="btn btn-ghost" href="#inquiry" data-pkg="$3,000 / month">Inquire <span class="arrow">→</span></a>
+        </article>
+        <article class="pkg feat">
+          <div class="top mono"><span>Tier 02</span><span class="tag mono">Most popular</span></div>
+          <h3>Growth</h3>
+          <div class="price">$5,000<small> / mo</small></div>
+          <dl class="spec"><div><dt>Campaigns</dt><dd>5</dd></div><div><dt>Ads per campaign</dt><dd>3</dd></div></dl>
+          <div class="bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+          <a class="btn btn-primary" href="#inquiry" data-pkg="$5,000 / month">Inquire <span class="arrow">→</span></a>
+        </article>
+        <article class="pkg">
+          <div class="top mono"><span>Tier 03</span></div>
+          <h3>Scale</h3>
+          <div class="price">$8,000<small> / mo</small></div>
+          <dl class="spec"><div><dt>Campaigns</dt><dd>10</dd></div><div><dt>Ads per campaign</dt><dd>5</dd></div></dl>
+          <div class="bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+          <a class="btn btn-ghost" href="#inquiry" data-pkg="$8,000+ / month">Inquire <span class="arrow">→</span></a>
+        </article>
+      </div>
+      <p class="note mono"><span class="dot"></span>Final scope may vary depending on business needs.</p>
+    </div>
+  </section>
+
+  <section id="inquiry" style="padding-top:24px">
+    <div class="wrap inq">
+      <div class="inq-intro">
+        <span class="label mono"><span class="dot"></span>Inquire within</span>
+        <h2>Let’s see if <span class="out">we’re</span> a fit.</h2>
+        <p>Tell us a little about your business and what you’re looking to accomplish.</p>
+        <dl class="connect">
+          <div><dt>Instagram</dt><dd>@jrenterprisellc</dd></div>
+          <div><dt>Service area</dt><dd>Global reach</dd></div>
+          <div><dt>Hours</dt><dd>Mon – Fri, 9am – 6pm</dd></div>
+        </dl>
+      </div>
+
+      <form id="form" novalidate>
+        <div class="form-title mono"><span>New inquiry</span><span><span class="dot"></span>&nbsp; Reviewed within business hours</span></div>
+        <div class="f"><label for="name">Full name <span class="req">*</span></label><input id="name" name="name" autocomplete="name" required></div>
+        <div class="f"><label for="phone">Phone number <span class="req">*</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(000) 000-0000" required></div>
+        <div class="f full"><label for="email">Email <span class="req">*</span></label><input id="email" name="email" type="email" autocomplete="email" required></div>
+        <div class="f"><label for="brand">Business / brand name</label><input id="brand" name="brand" autocomplete="organization"></div>
+        <div class="f"><label for="handle">Instagram or website</label><input id="handle" name="handle" placeholder="@yourbrand or yoursite.com"></div>
+        <fieldset class="f full" style="border:0;padding:0;margin:0">
+          <legend class="lbl" style="margin-bottom:8px">Services you’re interested in</legend>
+          <div class="chips">
+            <input type="checkbox" id="s1" name="services" value="Brand Growth"><label for="s1">Brand Growth</label>
+            <input type="checkbox" id="s2" name="services" value="Lead Generation"><label for="s2">Lead Generation</label>
+            <input type="checkbox" id="s3" name="services" value="Advertising"><label for="s3">Advertising</label>
+            <input type="checkbox" id="s4" name="services" value="Marketing Strategy"><label for="s4">Marketing Strategy</label>
+            <input type="checkbox" id="s5" name="services" value="Other"><label for="s5">Other</label>
+          </div>
+        </fieldset>
+        <div class="f full"><label for="goal">What are you trying to accomplish?</label><textarea id="goal" name="goal" placeholder="Your goals, your audience, and what you've tried so far."></textarea></div>
+        <div class="f full"><label for="budget">Budget range <span class="req">*</span></label>
+          <select id="budget" name="budget" required>
+            <option value="">Select your budget range</option>
+            <option>Under $3,000 / month</option>
+            <option>$3,000 / month</option>
+            <option>$5,000 / month</option>
+            <option>$8,000+ / month</option>
+            <option>Not sure yet</option>
+          </select></div>
+        <div class="form-foot">
+          <small id="msg">Fields marked * are required.</small>
+          <button class="btn btn-primary" type="submit">Send inquiry <span class="arrow">→</span></button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="foot-big" aria-hidden="true">JR Enterprise</p>
+    <div class="foot-row mono">
+      <span>Lead Generation • Advertising • Brand Growth</span>
+      <span>Instagram @jrenterprisellc</span>
+      <span>© 2026 JR Enterprise LLC</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Form */
+  var form=document.getElementById('form'), msg=document.getElementById('msg'), budget=document.getElementById('budget');
+  document.querySelectorAll('[data-pkg]').forEach(function(a){a.addEventListener('click',function(){budget.value=a.getAttribute('data-pkg');});});
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var bad=[].filter.call(form.querySelectorAll('[required]'),function(el){return !el.value.trim()||(el.type==='email'&&!/\S+@\S+\.\S+/.test(el.value));});
+    if(bad.length){msg.textContent='Please add your name, phone, a valid email, and a budget range.';msg.className='err';bad[0].focus();return;}
+    var first=document.getElementById('name').value.trim().split(' ')[0].replace(/[<>&"]/g,'');
+    form.innerHTML='<div class="done"><span class="label mono"><span class="dot"></span>Inquiry received</span><h3>Thanks, '+first+'.</h3><p>JR Enterprise will review your details and reach out within business hours.</p></div>';
+  });
+})();
+</script>
+
+</body>
+</html>
